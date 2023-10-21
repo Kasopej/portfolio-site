@@ -1,0 +1,8 @@
+@mixin light-mode {
+    --text-color: #{$black};
+    --bg-color: #{$white};
+}
+
+@mixin custom-light-mode-styles {
+    @content;
+}
