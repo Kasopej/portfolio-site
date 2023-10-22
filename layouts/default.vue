@@ -3,13 +3,27 @@
     <header>
       <nav class="container">
         <div class="brand">
-          <span class="brand-name"> Kasope </span>
+          <span class="brand-name">
+            <Icon
+              data="@/assets/svgs/icons/brand-logo.svg"
+              class="brand-icon default-icon-stroke"
+            />
+            Kasope
+          </span>
         </div>
         <ul class="nav-menu">
-          <li class="nav-item"><a href="#" class="nav-link">home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">works</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">about-me</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">contacts</a></li>
+          <li class="nav-item">
+            <MenuLink to="/" class="nav-link"> home </MenuLink>
+          </li>
+          <li class="nav-item">
+            <MenuLink to="/" class="nav-link"> works </MenuLink>
+          </li>
+          <li class="nav-item">
+            <MenuLink to="/" class="nav-link"> about-me </MenuLink>
+          </li>
+          <li class="nav-item">
+            <MenuLink to="/" class="nav-link"> contact </MenuLink>
+          </li>
           <li class="nav-item">
             EN
             <span class="icon"></span>
@@ -56,6 +70,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 32px 0 8px 0;
+    .brand-icon {
+      margin-right: 8px;
+    }
   }
   ul.nav-menu {
     list-style: none;

@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from 'tailwindcss'
+
 export default {
   content: [
     `${__dirname}/components/**/*.{vue,js,ts}`,
@@ -14,8 +15,14 @@ export default {
     `${__dirname}/app.config.{js,ts}`,
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "rgb(var(--primary-color) / <alpha-value>)",
+        contrast: "rgb(var(--text-color) / <alpha-value>)",
+        base: "rgb(var(--bg-color) / <alpha-value>)",
+      },
+    },
   },
   plugins: [],
-  darkMode: ["class", '[data-thene="dark"'],
-};
+  darkMode: ["class", '[data-theme="dark"'],
+} satisfies Config
