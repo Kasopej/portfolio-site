@@ -5,6 +5,10 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   css: ['styles/scss/index.scss'],
+  modules: [
+    '@pinia/nuxt',
+    '@nuxtjs/tailwindcss'
+  ],
   vite: {
     css: {
       preprocessorOptions: {
