@@ -10,6 +10,13 @@
           <li class="nav-item"><a href="#" class="nav-link">works</a></li>
           <li class="nav-item"><a href="#" class="nav-link">about-me</a></li>
           <li class="nav-item"><a href="#" class="nav-link">contacts</a></li>
+          <li class="nav-item">
+            EN
+            <span class="icon"></span>
+          </li>
+          <li class="nav-item">
+            <ThemeControl />
+          </li>
         </ul>
       </nav>
     </header>
@@ -18,11 +25,23 @@
 </template>
 
 <script setup lang="ts">
-  function changeTheme() {
-    if (document.documentElement.getAttribute("data-theme") !== "light") {
-      document.documentElement.setAttribute("data-theme", "light");
-    } else document.documentElement.removeAttribute("data-theme");
-  }
+  const userStore = useUserStore();
+  const { themePreference } = storeToRefs(userStore);
+  const { setThemePreference } = usePreferences();
+
+  let userAgentThemeSetting: MediaQueryList | null = null;
+  onMounted(() => {
+    userAgentThemeSetting = window.matchMedia("(prefers-color-scheme: dark)");
+    userAgentThemeSetting.addEventListener("change", function () {
+      setThemePreference(this, themePreference.value);
+    });
+  });
+
+  watch(
+    themePreference,
+    (currentValue) => setThemePreference(userAgentThemeSetting, currentValue),
+    { immediate: true }
+  );
 </script>
 
 <style scoped lang="scss">
@@ -40,10 +59,12 @@
   }
   ul.nav-menu {
     list-style: none;
+    display: flex;
+    align-items: center;
     li {
       display: inline;
       &:not(:first-child) {
-        margin-left: 22px;
+        margin-left: 32px;
       }
     }
   }
