@@ -7,4 +7,6 @@
 </template>
 
 <script setup lang="ts"></script>
-<style lang="scss"></style>
+<style lang="scss">
+  @import "styles/scss/icons";
+</style>
