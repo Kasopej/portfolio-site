@@ -4,13 +4,13 @@
     padding: 0;
     color: var(--text-color);
 }
-
 :root {
-    --text-color: #{$white};
-    --bg-color: #{$black};
-}
-:root[data-theme="light"] {
     @include light-mode;
+}
+
+:root[data-theme="dark"] {
+    --text-color: #{$white};
+    --bg-color: #{$black-1};
 }
 
 body {
