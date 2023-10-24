@@ -1,44 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './tailwind.css';
 
-@layer base {
-    * {
-        margin: 0;
-        padding: 0;
-        @apply text-contrast;
-    }
+* {
+    margin: 0;
+    padding: 0;
+}
 
-    /* define vars for theming */
-    :root {
-        --text-color: 40 44 51;
-        --bg-color: 255 255 255;
-        --primary-color: 199 120 221;
-        --secondary-color: 40 44 51;
-    }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-    :root[data-theme="dark"] {
-        --text-color: 255 255 255;
-        --bg-color: 40 44 51;
-        --secondary-color: 171 178 191;
-    }
+main.layout {
+    width: 100%;
+    display: block;
+}
 
-    body {
-        @apply bg-base;
-    }
-
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    main.layout {
-        width: 100%;
-        display: block;
-    }
-
-    .container {
-        width: 75%;
-        max-width: 1200px;
-    }
+.container {
+    width: 75%;
+    max-width: 1200px;
 }
