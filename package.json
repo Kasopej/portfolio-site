@@ -13,6 +13,8 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@pinia/nuxt": "^0.5.1",
+    "@types/cookie": "^0.5.3",
+    "@types/js-cookie": "^3.0.5",
     "nuxt": "^3.7.4",
     "sass": "^1.69.4",
     "vite-plugin-svgicon": "^2.0.0",
@@ -24,6 +26,10 @@
     "@heroicons/vue": "^2.0.18",
     "@yzfe/svgicon": "^1.1.1",
     "@yzfe/vue3-svgicon": "^1.0.2",
-    "pinia": "^2.1.7"
+    "cookie": "^0.5.0",
+    "js-cookie": "^3.0.5",
+    "localforage": "^1.10.0",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate-2": "^2.0.14"
   }
 }
