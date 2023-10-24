@@ -12,7 +12,7 @@
         --text-color: 40 44 51;
         --bg-color: 255 255 255;
         --primary-color: 199 120 221;
-        --secondary-color: 40 44 51;
+        --secondary-color: 108 108 109;
     }
 
     :root[data-theme="dark"] {

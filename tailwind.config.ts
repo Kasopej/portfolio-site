@@ -18,6 +18,7 @@ export default {
     extend: {
       colors: {
         primary: "rgb(var(--primary-color) / <alpha-value>)",
+        secondary: "rgb(var(--secondary-color) / <alpha-value>)",
         contrast: "rgb(var(--text-color) / <alpha-value>)",
         base: "rgb(var(--bg-color) / <alpha-value>)",
       },

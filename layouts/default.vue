@@ -78,10 +78,13 @@
     list-style: none;
     display: flex;
     align-items: center;
-    li {
+    li.nav-item {
       display: inline;
       &:not(:first-child) {
         margin-left: 32px;
+      }
+      .nav-link {
+        @apply text-secondary;
       }
     }
   }
