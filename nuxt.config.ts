@@ -6,7 +6,13 @@ export default defineNuxtConfig({
   alias: {
     'styles': resolve('./assets/styles'),
   },
-  devtools: { enabled: true },
+  app: {
+    head: {
+      link: [
+        { href: "https://fonts.googleapis.com/css2?family=Fira+Code&display=swap", rel: "stylesheet", crossorigin: 'anonymous' }
+      ]
+    }
+  },
   css: ['styles/css/index.css'],
   modules: [
     '@pinia/nuxt',
@@ -25,9 +31,15 @@ export default defineNuxtConfig({
     vue: {
       template: {
         transformAssetUrls: {
-          Icon: ['data']
+          Icon: ['data'],
+          video: ['src', 'poster'],
+          source: ['src'],
+          img: ['src'],
+          image: ['xlink:href', 'href'],
+          use: ['xlink:href', 'href']
         }
       }
     }
   },
+  devtools: { enabled: true },
 })

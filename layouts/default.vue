@@ -64,6 +64,9 @@
       width: 100%;
     }
   }
+  header {
+    margin-bottom: 64px;
+  }
   nav {
     margin: auto;
     display: flex;
