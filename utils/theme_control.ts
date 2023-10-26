@@ -6,6 +6,6 @@ export function setDarkTheme() {
 
 export function setLightTheme() {
     if (document.documentElement.getAttribute("data-theme") !== "light") {
-        document.documentElement.setAttribute("data-theme", "light");
+        document.documentElement.setAttribute("data-theme", 'light');
     }
 }

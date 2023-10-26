@@ -6,7 +6,7 @@ export const usePreferences = () => {
     userAppPreference: ThemeOptions
   ) {
     const userAgentPrefersDark = !!userAgentPreference?.matches;
-    const prefersDark = userAgentPrefersDark || userAppPreference === 'dark';
+    const prefersDark = userAppPreference === 'dark';
     if (process.server) return
     if (prefersDark) setDarkTheme();
     else setLightTheme();

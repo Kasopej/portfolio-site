@@ -1,11 +1,11 @@
 import { ThemeOptions } from "~/types/themes";
 
 type State = {
-    themePreference: ThemeOptions
+    themePreference: ThemeOptions | null
 }
 
 export const useUserStore = defineStore('userStore', () => {
-    const themePreference = ref<State['themePreference']>('dark');
+    const themePreference = ref<State['themePreference']>(null);
     function setUserThemePreference(theme: ThemeOptions) {
         themePreference.value = theme
     }

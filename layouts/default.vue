@@ -45,15 +45,24 @@
 
   let userAgentThemeSetting: MediaQueryList | null = null;
   onMounted(() => {
-    userAgentThemeSetting = window.matchMedia("(prefers-color-scheme: dark)");
+    userAgentThemeSetting = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ) as MediaQueryList;
     userAgentThemeSetting.addEventListener("change", function () {
+      if (!themePreference.value)
+        themePreference.value = userAgentThemeSetting!.matches
+          ? "dark"
+          : "light";
       setThemePreference(this, themePreference.value);
     });
   });
 
   watch(
     themePreference,
-    (currentValue) => setThemePreference(userAgentThemeSetting, currentValue),
+    (currentValue) => {
+      if (!currentValue) return;
+      setThemePreference(userAgentThemeSetting, currentValue);
+    },
     { immediate: true }
   );
 </script>
