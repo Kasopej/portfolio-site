@@ -1,8 +1,6 @@
-<script lang="ts" setup></script>
-
 <template>
   <div class="page-root">
-    <section class="container intro !mb-28">
+    <section class="container !mb-28" id="intro">
       <div class="left">
         <h1 class="heading">
           Kasope is a
@@ -32,7 +30,7 @@
         </figure>
       </div>
     </section>
-    <section class="container quotes">
+    <section class="container !mb-[74px]" id="quotes">
       <div class="flex flex-col items-end">
         <BlockQuoteBoxed>
           With great power comes great electricity bill
@@ -40,9 +38,27 @@
         <p class="border border-secondary p-4">- Dr Who</p>
       </div>
     </section>
-    <section class="container"></section>
+    <section class="container flex-col" id="projects">
+      <header class="flex flex-nowrap w-full items-center mb-12">
+        <h2>
+          <HashTag>projects</HashTag>
+        </h2>
+        <hr class="border-primary w-1/2" />
+        <button class="ml-auto">
+          View all
+          <ArrowRightIcon class="icon" />
+        </button>
+      </header>
+      <div class="flex flex-nowrap w-full">
+        <ProjectsItemCard v-for="n in 3" :key="n" class="w-1/3" />
+      </div>
+    </section>
   </div>
 </template>
+
+<script lang="ts" setup>
+  import { ArrowRightIcon } from "@heroicons/vue/24/outline";
+</script>
 
 <style scoped lang="scss">
   .page-root {
@@ -51,7 +67,7 @@
       flex-wrap: nowrap;
     }
   }
-  .intro {
+  #intro {
     > * {
       flex-basis: auto;
       flex-wrap: nowrap;
@@ -88,6 +104,14 @@
     }
     button.action {
       @apply border border-solid border-primary text-contrast;
+    }
+  }
+  #projects {
+    h2 {
+      line-height: 1;
+    }
+    hr {
+      margin-left: 16px;
     }
   }
 </style>

@@ -4,11 +4,11 @@
     class="flex items-center"
     active-class="!text-contrast"
   >
-    <Icon
-      data="@/assets/svgs/icons/hash.svg"
-      class="hashtag-link-icon !fill-primary"
-    />
-    <slot></slot>
+    <HashTag>
+      <template #default>
+        <slot></slot>
+      </template>
+    </HashTag>
   </NuxtLink>
 </template>
 
