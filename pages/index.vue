@@ -2,7 +2,7 @@
 
 <template>
   <div class="page-root">
-    <section class="container intro">
+    <section class="container intro !mb-28">
       <div class="left">
         <h1 class="heading">
           Kasope is a
@@ -12,7 +12,7 @@
         <p class="tagline mb-6">
           He crafts responsive web apps where beauty meets resilient solutions
         </p>
-        <button class="action px-4 py-2">Contact me!!</button>
+        <button class="action px-4 py-2">Contact me</button>
       </div>
       <div class="right">
         <figure>
@@ -25,14 +25,21 @@
           </figcaption>
           <Icon
             data="@/assets/svgs/imgs/dots-square.svg"
-            class="icon dots fill-secondary"
+            class="icon dots !fill-secondary"
             width="84"
             height="84"
           />
         </figure>
       </div>
     </section>
-    <section class="container"></section>
+    <section class="container quotes">
+      <div class="flex flex-col items-end">
+        <BlockQuoteBoxed>
+          With great power comes great electricity bill
+        </BlockQuoteBoxed>
+        <p class="border border-secondary p-4">- Dr Who</p>
+      </div>
+    </section>
     <section class="container"></section>
   </div>
 </template>
@@ -40,7 +47,7 @@
 <style scoped lang="scss">
   .page-root {
     > .container {
-      @apply flex m-auto;
+      @apply flex m-auto justify-center;
       flex-wrap: nowrap;
     }
   }
@@ -62,7 +69,7 @@
           height: 95%;
           background-image: url("@/assets/pngs/developer_hoodie.png");
           background-size: auto;
-          background-position: 90% 20%;
+          background-position: center 0;
           background-repeat: no-repeat;
         }
         .icon.dots {

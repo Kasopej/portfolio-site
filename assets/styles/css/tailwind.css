@@ -3,25 +3,40 @@
 @tailwind utilities;
 
 @layer base {
-    * {
-        @apply text-contrast;
-    }
+  * {
+    @apply text-contrast;
+  }
 
-    /* define vars for theming */
+  /* define vars for theming */
+  :root {
+    --text-color: 40 44 51;
+    --bg-color: 255 255 255;
+    --primary-color: 199 120 221;
+    --secondary-color: 108 108 109;
+  }
+
+  @media (prefers-color-scheme: dark) {
     :root {
-        --text-color: 40 44 51;
-        --bg-color: 255 255 255;
-        --primary-color: 199 120 221;
-        --secondary-color: 108 108 109;
+      --text-color: 255 255 255;
+      --bg-color: 40 44 51;
+      --secondary-color: 171 178 191;
     }
+  }
 
-    :root[data-theme="dark"] {
-        --text-color: 255 255 255;
-        --bg-color: 40 44 51;
-        --secondary-color: 171 178 191;
-    }
+  :root[data-theme="dark"] {
+    --text-color: 255 255 255;
+    --bg-color: 40 44 51;
+    --secondary-color: 171 178 191;
+  }
 
-    body {
-        @apply bg-base;
-    }
+  :root[data-theme="light"] {
+    --text-color: 40 44 51;
+    --bg-color: 255 255 255;
+    --primary-color: 199 120 221;
+    --secondary-color: 108 108 109;
+  }
+
+  body {
+    @apply bg-base;
+  }
 }
