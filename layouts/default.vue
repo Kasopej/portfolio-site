@@ -45,26 +45,16 @@
 
   let userAgentThemeSetting: MediaQueryList | null = null;
   onMounted(() => {
+    // listen for UA theme changes (only applied if no user preference already set)
     userAgentThemeSetting = window.matchMedia(
       "(prefers-color-scheme: dark)"
     ) as MediaQueryList;
     userAgentThemeSetting.addEventListener("change", function () {
       if (!themePreference.value)
-        themePreference.value = userAgentThemeSetting!.matches
-          ? "dark"
-          : "light";
-      setThemePreference(this, themePreference.value);
+        themePreference.value = this.matches ? "dark" : "light";
+      setThemePreference(themePreference.value);
     });
   });
-
-  watch(
-    themePreference,
-    (currentValue) => {
-      if (!currentValue) return;
-      setThemePreference(userAgentThemeSetting, currentValue);
-    },
-    { immediate: true }
-  );
 </script>
 
 <style scoped lang="scss">
