@@ -39,16 +39,14 @@
       </div>
     </section>
     <section class="container flex-col" id="projects">
-      <header class="flex flex-nowrap w-full items-center mb-12">
-        <h2>
-          <HashTag>projects</HashTag>
-        </h2>
-        <hr class="border-primary w-1/2" />
-        <button class="ml-auto">
-          View all
-          <ArrowRightIcon class="icon" />
-        </button>
-      </header>
+      <SectionHeading>
+        <template #header-append>
+          <button class="ml-auto">
+            View all
+            <ArrowRightIcon class="icon" />
+          </button>
+        </template>
+      </SectionHeading>
       <div class="flex flex-nowrap w-full">
         <ProjectsItemCard v-for="n in 3" :key="n" class="w-1/3" />
       </div>
