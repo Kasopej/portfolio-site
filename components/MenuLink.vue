@@ -2,7 +2,7 @@
   <NuxtLink
     v-bind="$attrs"
     class="flex items-center"
-    active-class="!text-contrast"
+    :active-class="activeClass ?? '!text-primary'"
   >
     <HashTag>
       <template #default>
@@ -15,8 +15,9 @@
 <script setup lang="ts">
   import { NuxtLinkProps } from "#app";
 
-  interface Props extends /* @vue-ignore */ NuxtLinkProps {}
+  interface Props extends /* @vue-ignore */ Partial<NuxtLinkProps> {}
   const props = defineProps<Props>();
+  const { activeClass } = toRefs(props);
 </script>
 
 <style scoped lang="scss">

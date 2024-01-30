@@ -1,7 +1,7 @@
 <template>
   <div class="page-root">
-    <section class="container !mb-28" id="intro">
-      <div class="left">
+    <section class="container !mb-28 gap-4" id="intro">
+      <div class="w-3/5 left-side">
         <h1 class="heading">
           Kasope is a
           <span class="text-primary">software engineer </span>specialized in
@@ -12,8 +12,16 @@
         </p>
         <button class="action px-4 py-2">Contact me</button>
       </div>
-      <div class="right">
-        <figure>
+      <div class="right-side">
+        <figure class="h-full relative">
+          <CanvasPlotter
+            width="150"
+            height="150"
+            plot-type="line"
+            draw-type="stroke"
+            stroke-color="rgb(199 120 221)"
+            :vectors="vectorsForCanvas1"
+          />
           <div class="bg-box"></div>
           <figcaption
             class="border border-secondary p-2 flex items-center gap-2"
@@ -38,8 +46,8 @@
         <p class="border border-secondary p-4">- Dr Who</p>
       </div>
     </section>
-    <section class="container flex-col" id="projects">
-      <SectionHeading>
+    <section class="container flex-col !mb-[106px]" id="projects">
+      <SectionHeading title="projects">
         <template #header-append>
           <button class="ml-auto">
             View all
@@ -47,8 +55,48 @@
           </button>
         </template>
       </SectionHeading>
-      <div class="flex flex-nowrap w-full">
-        <ProjectsItemCard v-for="n in 3" :key="n" class="w-1/3" />
+      <div class="flex flex-wrap w-full">
+        <ProjectsItemCard
+          v-for="n in 3"
+          :key="n"
+          class="w-full sm:w-1/3 grow"
+        />
+      </div>
+    </section>
+    <section class="container flex-col !mb-[106px]" id="skills">
+      <SectionHeading title="skills"> </SectionHeading>
+      <div class="w-full flex flex-wrap">
+        <figure class="w-full md:w-2/5 grid grid-cols-2">
+          <div class="h-[400px]">
+            <Icon
+              data="@/assets/svgs/imgs/dots-square.svg"
+              class="icon dots !fill-secondary"
+              width="63"
+              height="63"
+            />
+          </div>
+          <div class="h-[300px]">
+            <Icon
+              data="@/assets/svgs/imgs/dots-square.svg"
+              class="icon dots !fill-secondary"
+              width="63"
+              height="63"
+            />
+          </div>
+        </figure>
+        <div class="w-full md:w-3/5 flex gap-3">
+          <div class="skill-column">
+            <SkillsBox title="languages" class="mb-2" />
+          </div>
+          <div class="skill-column">
+            <SkillsBox title="databases" class="mb-2" />
+            <SkillsBox title="other" class="mb-2" />
+          </div>
+          <div class="skill-column">
+            <SkillsBox title="tools" class="mb-2" />
+            <SkillsBox title="frameworks" class="mb-2" />
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -56,6 +104,38 @@
 
 <script lang="ts" setup>
   import { ArrowRightIcon } from "@heroicons/vue/24/outline";
+  import { LineVectors } from "~/types/ui_components/canvas";
+
+  const vectorsForCanvas1: LineVectors[] = [
+    {
+      x: "50%",
+      y: "100%",
+    },
+    {
+      dx: 0,
+      dy: "-100%",
+    },
+    {
+      dx: "50%",
+      dy: 0,
+    },
+    {
+      dx: 0,
+      dy: "80%",
+    },
+    {
+      dx: "-80%",
+      dy: 0,
+    },
+    {
+      dx: 0,
+      dy: -20,
+    },
+    {
+      dx: 40,
+      dy: 0,
+    },
+  ];
 </script>
 
 <style scoped lang="scss">
@@ -71,45 +151,30 @@
       flex-wrap: nowrap;
       flex-grow: 1;
     }
-    > .left {
-      width: 60%;
-      max-width: 60%;
-    }
-    > .right {
-      figure {
-        height: 100%;
-        position: relative;
-        .bg-box {
-          height: 95%;
-          background-image: url("@/assets/pngs/developer_hoodie.png");
-          background-size: auto;
-          background-position: center 0;
-          background-repeat: no-repeat;
-        }
-        .icon.dots {
-          position: absolute;
-          top: 50%;
-          right: 0;
-        }
-      }
-    }
-    h1.heading {
-      font-size: 32px;
-      @apply font-semibold mb-8 mt-8;
-    }
-    .tagline {
-      @apply text-secondary;
-    }
-    button.action {
-      @apply border border-solid border-primary text-contrast;
+    .icon.dots {
+      position: absolute;
+      top: 50%;
+      right: 0;
     }
   }
-  #projects {
-    h2 {
-      line-height: 1;
-    }
-    hr {
-      margin-left: 16px;
-    }
+
+  .bg-box {
+    height: 95%;
+    background-image: url("@/assets/pngs/developer_hoodie.png");
+    background-size: auto;
+    background-position: center 0;
+    background-repeat: no-repeat;
+  }
+  h1.heading {
+    @apply font-semibold mb-8 mt-8 text-[32px];
+  }
+  .tagline {
+    @apply text-secondary;
+  }
+  button.action {
+    @apply border border-solid border-primary text-contrast;
+  }
+  .skill-column {
+    @apply w-1/3;
   }
 </style>

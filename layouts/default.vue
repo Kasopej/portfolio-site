@@ -16,13 +16,13 @@
             <MenuLink to="/" class="nav-link"> home </MenuLink>
           </li>
           <li class="nav-item">
-            <MenuLink to="/" class="nav-link"> works </MenuLink>
+            <MenuLink to="/about" class="nav-link"> works </MenuLink>
           </li>
           <li class="nav-item">
-            <MenuLink to="/" class="nav-link"> about-me </MenuLink>
+            <MenuLink to="/about" class="nav-link"> about-me </MenuLink>
           </li>
           <li class="nav-item">
-            <MenuLink to="/" class="nav-link"> contact </MenuLink>
+            <MenuLink to="/about" class="nav-link"> contact </MenuLink>
           </li>
           <li class="nav-item">
             EN
