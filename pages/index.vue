@@ -15,13 +15,13 @@
       <div class="right-side">
         <figure class="h-full relative">
           <CanvasPlotter
-            class="absolute top-0 left-0 z-0"
+            class="absolute top-4 left-0 z-0"
             width="150"
             height="150"
             plot-type="line"
             draw-type="stroke"
             stroke-color="rgb(199 120 221)"
-            :vectors="vectorsForCanvas1"
+            :vectors="vectorsForCanvas"
           />
           <div class="bg-box relative z-10"></div>
           <figcaption
@@ -105,38 +105,7 @@
 
 <script lang="ts" setup>
   import { ArrowRightIcon } from "@heroicons/vue/24/outline";
-  import { LineVectors } from "~/types/ui_components/canvas";
-
-  const vectorsForCanvas1: LineVectors[] = [
-    {
-      x: "50%",
-      y: "100%",
-    },
-    {
-      dx: 0,
-      dy: "-100%",
-    },
-    {
-      dx: "50%",
-      dy: 0,
-    },
-    {
-      dx: 0,
-      dy: "80%",
-    },
-    {
-      dx: "-80%",
-      dy: 0,
-    },
-    {
-      dx: 0,
-      dy: -20,
-    },
-    {
-      dx: 40,
-      dy: 0,
-    },
-  ];
+  import { vectorsForCanvas } from "@/constants/canvas";
 </script>
 
 <style scoped lang="scss">
