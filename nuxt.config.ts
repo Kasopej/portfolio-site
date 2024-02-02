@@ -41,5 +41,10 @@ export default defineNuxtConfig({
       }
     }
   },
+  typescript: {
+    tsConfig: {
+      include: [resolve("./index.d.ts"),]
+    }
+  },
   devtools: { enabled: true },
 })

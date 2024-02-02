@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="canvasRef" class="absolute top-0 left-0" :id="uniqueId"></canvas>
+  <canvas ref="canvasRef" :id="uniqueId"></canvas>
 </template>
 
 <script setup lang="ts">
@@ -27,13 +27,14 @@
   const canvasRef = ref<HTMLCanvasElement | null>(null);
   const uniqueId = ref(String(Date.now()));
   const selectedVectorItemIndex = ref(0);
+  const ANIMATION_INTERVAL = 50;
 
   onMounted(() => {
     const context = canvasRef.value?.getContext("2d");
     if (context) plotOnCanvas(context);
   });
 
-  function plotOnCanvas(ctx: CanvasRenderingContext2D) {
+  async function plotOnCanvas(ctx: CanvasRenderingContext2D) {
     ctx.strokeStyle =
       drawType.value === "stroke"
         ? strokeColor?.value ?? ""
@@ -41,47 +42,61 @@
     const vector = clonedVectors[selectedVectorItemIndex.value];
     if (plotType.value === "line") {
       assertVectorMatchesPlotType<LineVectors>(plotType.value, vector);
-      plotLine(ctx, vector);
-      vector.x = vector.dx ?? vector.x;
-      vector.y = vector.dy ?? vector.y;
+      await plotLine(ctx, vector);
     }
     selectedVectorItemIndex.value++;
-    if (selectedVectorItemIndex.value >= clonedVectors.length) return;
+    if (selectedVectorItemIndex.value >= clonedVectors.length) {
+      return;
+    }
+
     requestAnimationFrame(() => plotOnCanvas(ctx));
+    // setTimeout(() => plotOnCanvas(ctx), ANIMATION_INTERVAL);
   }
 
-  function plotLine(ctx: CanvasRenderingContext2D, vector: LineVectors) {
-    ctx.moveTo(
-      resolveVectorValue(getVectorValue(vector, "x")),
-      resolveVectorValue(getVectorValue(vector, "y"))
-    );
+  async function plotLine(ctx: CanvasRenderingContext2D, vector: LineVectors) {
+    try {
+      const loop = 10;
+      for (let i = 1; i <= loop; i++) {
+        await new Promise((resolve) => {
+          function plotLineVectors() {
+            ctx.moveToTracked(
+              resolveVectorValue(getVectorValue(vector, "x")) / loop +
+                ctx.myCurrentCoordinates.x,
+              resolveVectorValue(getVectorValue(vector, "y")) / loop +
+                ctx.myCurrentCoordinates.y
+            );
 
-    ctx.lineTo(
-      resolveVectorValue(getVectorValue(vector, "dx")),
-      resolveVectorValue(getVectorValue(vector, "dy"))
-    );
+            ctx.lineToTracked(
+              ctx.myCurrentCoordinates.x +
+                resolveVectorValue(getVectorValue(vector, "dx")) / loop,
+              ctx.myCurrentCoordinates.y +
+                resolveVectorValue(getVectorValue(vector, "dy")) / loop
+            );
 
-    ctx.stroke();
+            ctx.stroke();
+            resolve(ctx);
+          }
+          requestAnimationFrame(plotLineVectors);
+          // setTimeout(plotLineVectors, i * ANIMATION_INTERVAL);
+        });
+      }
+    } catch (error) {
+      // do nothing
+    }
   }
 
   function getVectorValue<T extends LineVectors | ArcVectors>(
     vector: T,
     key: keyof T
   ) {
-    return String(
-      vector[key] ??
-        (clonedVectors[selectedVectorItemIndex.value - 1] as T)?.[key] ??
-        0
-    );
+    return String(vector[key] ?? 0);
   }
 
   function resolveVectorValue(value: string): number {
     if (isNaN(parseInt(value, 10))) return 0;
     else {
       const strippedNumber = parseInt(value, 10);
-      console.log({ strippedNumber });
       const strippedUnit = value.replaceAll(/[\d.-]+/g, "");
-      console.log({ strippedUnit });
 
       return convertUnit(strippedUnit, strippedNumber);
     }

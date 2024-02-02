@@ -15,6 +15,7 @@
       <div class="right-side">
         <figure class="h-full relative">
           <CanvasPlotter
+            class="absolute top-0 left-0 z-0"
             width="150"
             height="150"
             plot-type="line"
@@ -22,7 +23,7 @@
             stroke-color="rgb(199 120 221)"
             :vectors="vectorsForCanvas1"
           />
-          <div class="bg-box"></div>
+          <div class="bg-box relative z-10"></div>
           <figcaption
             class="border border-secondary p-2 flex items-center gap-2"
           >
