@@ -11,13 +11,14 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxtjs/seo": "^2.0.0-rc.15",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@pinia/nuxt": "^0.5.1",
     "@types/cookie": "^0.5.3",
     "@types/js-cookie": "^3.0.5",
     "nuxt": "^3.7.4",
     "sass": "^1.69.4",
-    "vite-plugin-svgicon": "^2.0.0",
+    "vite-plugin-svgicon": "^2.1.2",
     "vite-svg-loader": "^4.0.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"

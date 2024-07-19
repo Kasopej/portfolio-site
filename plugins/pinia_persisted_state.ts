@@ -1,5 +1,5 @@
-import { Pinia } from "pinia"
-import { createPersistedStatePlugin } from "pinia-plugin-persistedstate-2"
+import type { Pinia } from "pinia"
+import { createPersistedStatePlugin } from "pinia-plugin-persistedstate-2/dist/index.es.prod.mjs"
 import localForage from 'localforage'
 import Cookies from 'js-cookie'
 import cookie from 'cookie'

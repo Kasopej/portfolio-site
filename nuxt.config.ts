@@ -15,9 +15,15 @@ export default defineNuxtConfig({
   },
   css: ['styles/css/index.css'],
   modules: [
+    "@nuxtjs/seo",
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss'
   ],
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL,
+    name: 'Kasope\'s Portfolio',
+    description: 'Kasope\'s Portfolio',
+  },
   vite: {
     plugins: [
       svgLoader({
@@ -43,7 +49,7 @@ export default defineNuxtConfig({
   },
   typescript: {
     tsConfig: {
-      include: [resolve("./index.d.ts"),]
+      include: [resolve("./index.d.ts"),],
     }
   },
   devtools: { enabled: true },
